@@ -41,6 +41,13 @@ public class LoginFrame extends JFrame {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		
+		try {
+		    setIconImage(ImageIO.read(new File(u.getClassFilePath(), "images/icon.png")));
+		}
+		catch (IOException exc) {
+		    exc.printStackTrace();
+		}
 
 		txuser.setBounds(70,90,165,20);
 		pass.setBounds(70,125,165,20);
