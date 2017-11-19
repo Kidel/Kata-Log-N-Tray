@@ -134,3 +134,4 @@ typings/
 .env
 
 database/*
+package-lock.json
