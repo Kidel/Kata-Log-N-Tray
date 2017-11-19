@@ -1,7 +1,7 @@
-# (kata) Log 'N Tray
+# (Kata) Log 'N Tray
 Code kata. 
 
-A simple Java+Node+MongoDB application to login and comunicate your status interacting with a tray icon.
+A simple Java+Node+MongoDB application to login and comunicate your status interacting with a tray icon. The user can log in from the Java client and change his/her status (using cookies and session). If the user makes no actions for 1 hour (default), the server will mark him/her as logged out. After the login, the client will reduce to tray, and the icon will change according to the selected status.
 
 ## Instructions
 * Build the contents of /LogNTray as a Java application. External libraries are in ```lib.zip```.
