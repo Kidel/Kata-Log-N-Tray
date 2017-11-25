@@ -14,7 +14,7 @@ var config = require("./config");
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/UserManagement', { useMongoClient: true }); // TODO username and password from config
+mongoose.connect('mongodb://localhost/UserManagement', { useMongoClient: true }); // TODO remember to specify username and password in your configuration
 
 var app = express();
 var server = require('http').Server(app);
@@ -26,7 +26,7 @@ app.use(session({
     saveUninitialized: true,
     maxAge: new Date(Date.now() + 3600000),
     store: new MongoStore({mongooseConnection: mongoose.connection}),
-    cookie: { secure: false } //TODO in production change to true
+    cookie: { secure: false } //TODO in production change it to true
 }));
 
 // API file for interacting with MongoDB
