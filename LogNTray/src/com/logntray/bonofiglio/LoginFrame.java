@@ -16,14 +16,12 @@ public class LoginFrame extends JFrame {
 	JTextField txuser = new JTextField();
 	JPasswordField pass = new JPasswordField();
 	
-	Util u = new Util();
-	
-	LoginFrame(String title, ActionListener actionListener){
+	public LoginFrame(String title, ActionListener actionListener){
 		new LoginFrame(title);
 		setActionLogin(actionListener);
 	}
 
-	LoginFrame(String title){
+	public LoginFrame(String title){
 		super(title);
 		
 		setSize(320,250);
@@ -34,7 +32,7 @@ public class LoginFrame extends JFrame {
 		panel.setLayout (null); 
 		
 		try {
-			BufferedImage logoPicture = ImageIO.read(new File(u.getClassFilePath(), "images/logo.png"));
+			BufferedImage logoPicture = ImageIO.read(new File((new ClassFilePathExtractor()).getPath(), "images/logo.png"));
 			JLabel picLabel = new JLabel(new ImageIcon(logoPicture));
 			picLabel.setBounds(5,5,295,75);
 	        panel.add(picLabel);
@@ -43,7 +41,7 @@ public class LoginFrame extends JFrame {
 		}
 		
 		try {
-		    setIconImage(ImageIO.read(new File(u.getClassFilePath(), "images/icon.png")));
+		    setIconImage(ImageIO.read(new File((new ClassFilePathExtractor()).getPath(), "images/icon.png")));
 		}
 		catch (IOException exc) {
 		    exc.printStackTrace();

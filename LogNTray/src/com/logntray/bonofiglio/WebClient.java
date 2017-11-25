@@ -12,12 +12,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
+//import org.apache.http.cookie.Cookie;
 
 public class WebClient {
 
@@ -46,11 +46,11 @@ public class WebClient {
 				String res = EntityUtils.toString(entity);
 				System.out.println(res);
 				
-				
+				/*// debug cookie informations
 				for (Cookie cookie : cookies.getCookies()) {
 					System.out.println(cookie.getName());
 					System.out.println(cookie.getValue());
-				}
+				}*/
 				
 				return res;
 			}

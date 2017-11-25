@@ -2,6 +2,7 @@ package com.logntray.bonofiglio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -9,15 +10,15 @@ import org.apache.http.message.BasicNameValuePair;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class APIAdapter {
+public class NodeServerAPIAdapter implements APIFacade {
 	private WebClient wc;
 	private String loginUrl;
 	private String statusUrl;
 	private String logoutUrl;
 
-	APIAdapter() {
+	public NodeServerAPIAdapter() {
 		this.wc = new WebClient();
-		JsonObject config = (new ConfigParser()).parse();
+		Map<String, String> config = (new JsonConfigParser()).parse();
 		
 		// defaults
 		this.loginUrl = "http://localhost:3000/api/login";
@@ -26,19 +27,19 @@ public class APIAdapter {
 		
 		if(config != null) {
 			try {
-				this.loginUrl = config.get("loginUrl").getAsString();
+				this.loginUrl = config.get("loginUrl");
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
 			try {
-				this.statusUrl = config.get("statusUrl").getAsString();
+				this.statusUrl = config.get("statusUrl");
 			}
 			catch(Exception e) {
 				e.printStackTrace();
 			}
 			try {
-				this.logoutUrl = config.get("logoutUrl").getAsString();
+				this.logoutUrl = config.get("logoutUrl");
 			}
 			catch(Exception e) {
 				e.printStackTrace();

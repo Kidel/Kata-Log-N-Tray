@@ -16,7 +16,7 @@ public class UI {
 
 	private Repository r = new Repository();
 
-	UI() {
+	public UI() {
 		title = "Log 'n Tray";
 		/* Use an appropriate Look and Feel */
 		if (!tryLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"))
@@ -61,6 +61,7 @@ public class UI {
 	}
 
 	private void createAndShowGUI() {
+		// Login window
 		frame = new LoginFrame(title);
 		frame.setActionLogin(
 				new ActionListener(){
@@ -84,11 +85,12 @@ public class UI {
 						}
 					}
 				});		
-
+		
+		// Login window behavior when closed (windowClosed will only apply after a successful login because of DISPOSE_ON_CLOSE)
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				//System.out.println("A is closing");
+				//
 			}
 
 			@Override
@@ -102,12 +104,16 @@ public class UI {
 			System.out.println("SystemTray is not supported");
 			return;
 		}
-		final PopupMenu popup = new PopupMenu();
+		
+		// setting up the System Tray
 		trayIcon = new TrayIcon(createImage("../../../images/offline.png", "offline"));
 		tray = SystemTray.getSystemTray();
 
 		trayIcon.setToolTip(title);
 		trayIcon.setImageAutoSize(true);
+		
+		// setting up the System Tray menu
+		final PopupMenu popup = new PopupMenu();
 
 		// Create a popup menu components
 		MenuItem aboutItem = new MenuItem("About");
